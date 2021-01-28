@@ -11,7 +11,7 @@ end
 
 #collects user input 
 def user_input
-  gets.chomp
+  gets.chomp.to_i
 end
 
 #invalid user input message
@@ -21,25 +21,22 @@ end
 
 #compares input to computer number 
 def compare (user_input, computer_number)
-  
-   while user_input != "exit" do
+
     if user_input == computer_number
       puts "You guessed the correct number!"
-    else
+    elsif (user_input != computer_number) && (user_input > 0) && (user_input < 6)
       puts "Sorry! The computer guessed #{computer_number}."
+    elsif user_input == "exit".to_i
+     puts "Goodbye!"
+   else 
+      invalid_input
     end
-    user_prompt
-    user_input
-    computer_number
-     binding.pry
-  end
 
-  puts "Goodbye!"
-  
 end 
 
-######GAME#####
 def run_guessing_game
+
  user_prompt
  compare(user_input, computer_number)
+
 end 
